@@ -25,23 +25,23 @@ data Exit
    | NoExit (Maybe Text)
 
 data Exits = Exits
-    { North :: Exit
-    , South :: Exit
-    , East :: Exit
-    , West :: Exit
+    { north :: Exit
+    , south :: Exit
+    , east :: Exit
+    , west :: Exit
     }
 
 data Room = Room
-    { Id :: RoomId
-    , Details :: Details
-    , Items :: [Item]
-    , Exits :: Exits
+    { id :: RoomId
+    , details :: Details
+    , items :: [Item]
+    , exits :: Exits
     }
 
 data Player = Player 
-    { Details :: Details
-    , Location :: RoomId 
-    , Inventory :: [Item]
+    { details :: Details
+    , location :: RoomId 
+    , inventory :: [Item]
     }
 
 data World = World
