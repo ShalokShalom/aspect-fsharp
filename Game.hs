@@ -20,9 +20,9 @@ data RoomId
     = RoomId Text
 
 data Exit
-   = PassableExit String RoomId
-   | LockedExit String Item Exit
-   | NoExit (Maybe String)
+   = PassableExit Text RoomId
+   | LockedExit Text Item Exit
+   | NoExit (Maybe Text)
 
 data Exits = Exits
     { North :: Exit
