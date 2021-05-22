@@ -9,12 +9,12 @@ import Data.Map (Map)
 --------- Model ---------
 
 data Details = Details
-     { name : Text
-     , description : Text
+     { name :: Text
+     , description :: Text
      }
 
 data Item = Item
-     { details : Details }
+     { details :: Details }
 
 data RoomId 
     = RoomId Text
@@ -25,28 +25,28 @@ data Exit
    | NoExit (Maybe String)
 
 data Exits = Exits
-    { North : Exit
-    , South : Exit
-    , East : Exit
-    , West : Exit
+    { North :: Exit
+    , South :: Exit
+    , East :: Exit
+    , West :: Exit
     }
 
 data Room = Room
-    { Id : RoomId
-    , Details : Details
-    , Items : [Item]
-    , Exits : Exits
+    { Id :: RoomId
+    , Details :: Details
+    , Items :: [Item]
+    , Exits :: Exits
     }
 
 data Player = Player 
-    { Details : Details
-    , Location : RoomId 
-    , Inventory : [Item]
+    { Details :: Details
+    , Location :: RoomId 
+    , Inventory :: [Item]
     }
 
 data World = World
-    { rooms : Map RoomId Room
-    , player : Player
+    { rooms :: Map RoomId Room
+    , player :: Player
     }
 
 
