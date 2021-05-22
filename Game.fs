@@ -1,42 +1,54 @@
-//
-// --------- Model ---------
-//
+{-# LANGUAGE NoImplicitPrelude #-}
 
-type Details =
-    { Name: string
-      Description: string }
+--------- Imports ---------
 
-type Item =
-    { Details: Details }
+import Relude
+import Data.Map (Map)
 
-type RoomId =
-    | RoomId of string
 
-type Exit =
-    | PassableExit of string * destination: RoomId
-    | LockedExit of string * key: Item * next: Exit 
-    | NoExit of string option
+--------- Model ---------
 
-type Exits =
-    { North: Exit
-      South: Exit
-      East: Exit
-      West: Exit }
+data Details = Details
+     { name : Text
+     , description : Text
+     }
 
-type Room =
-    { Id: RoomId
-      Details: Details
-      Items: Item list
-      Exits: Exits }
+data Item = Item
+     { details : Details }
 
-type Player =
-    { Details: Details
-      Location: RoomId
-      Inventory: Item list }
+data RoomId 
+    = RoomId Text
 
-type World =
-    { Rooms: Map<RoomId, Room> 
-      Player: Player }
+data Exit
+   = PassableExit String RoomId
+   | LockedExit String Item Exit
+   | NoExit (Maybe String)
+
+data Exits = Exits
+    { North : Exit
+    , South : Exit
+    , East : Exit
+    , West : Exit
+    }
+
+data Room = Room
+    { Id : RoomId
+    , Details : Details
+    , Items : [Item]
+    , Exits : Exits
+    }
+
+data Player = Player 
+    { Details : Details
+    , Location : RoomId 
+    , Inventory : [Item]
+    }
+
+data World = World
+    { rooms : Map RoomId Room
+    , player : Player
+    }
+
 
 // --------- Initial World ---------
 
